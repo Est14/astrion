@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(curl -s -o tecnologia.png \"https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783131114/tecnologia_klruhq.png\")",
+      "Bash(curl -s -o energia.png \"https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783130767/energia_qkjmew.png\")",
+      "Bash(start *)"
+    ]
+  }
+}
