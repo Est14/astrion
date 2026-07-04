@@ -1,0 +1,18 @@
+para que la # OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Node (por si en el futuro se agrega tooling de build)
+node_modules/
+npm-debug.log*
+
+# Local / temporal
+*.log
+.env
+.env.local
