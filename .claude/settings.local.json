@@ -7,7 +7,14 @@
       "Bash(start *)",
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(python \"C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad\\\\reorg.py\")"
+      "Bash(python \"C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad\\\\reorg.py\")",
+      "Bash(python3 *)",
+      "Bash(grep -n \"^/\\\\* ----\\\\|^/\\\\* =====\\\\|RESPONSIVE\" styles.css)",
+      "Bash(curl -s -o /tmp/hero_check.png \"https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783296968/Hero_pqzvmk.png\")",
+      "Bash(curl -s -o 'C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad/hero_check.png' https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783296968/Hero_pqzvmk.png)",
+      "Bash(curl -s -o 'C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad/unete.png' https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783297948/Unete_zlt9ho.png)",
+      "Bash(curl -s -o 'C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad/hero2.png' https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783298545/Hero_ry2rfv.png)",
+      "Bash(curl -s -o 'C:\\\\Users\\\\esteb\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-esteb-Documents-projects-ASTRION\\\\a6dfdd4f-0b15-493e-a6bc-99139d8c52cf\\\\scratchpad/unetenos.png' https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783299113/unetenos_kopx9d.png)"
     ]
   }
 }

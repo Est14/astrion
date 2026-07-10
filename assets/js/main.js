@@ -5,8 +5,11 @@ function navState(){
   const scrolled=window.scrollY>20;
   nav.classList.toggle('scrolled', scrolled);
   const line=nav.offsetHeight*0.6;
-  const hr=hero.getBoundingClientRect();
-  const overHero=hr.top<=line && hr.bottom>line;
+  let overHero=false;
+  if(hero){
+    const hr=hero.getBoundingClientRect();
+    overHero=hr.top<=line && hr.bottom>line;
+  }
   nav.classList.toggle('on-hero', overHero && !scrolled);
   let over=false;
   for(const s of darks){
@@ -22,6 +25,9 @@ window.addEventListener('resize',navState);
 /* carrusel de sectores: duplica los ítems para que el desplazamiento sea continuo */
 const sTrack=document.getElementById('sectorsTrack');
 if(sTrack){[...sTrack.children].forEach(el=>{const c=el.cloneNode(true);c.setAttribute('aria-hidden','true');sTrack.appendChild(c);});}
+
+/* selector de idioma: conserva la sección actual al cambiar de idioma */
+document.querySelectorAll('.js-lang-switch').forEach(a=>{ if(location.hash) a.href+=location.hash; });
 
 /* menú móvil */
 const burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
@@ -39,5 +45,19 @@ const io=new IntersectionObserver((es)=>{es.forEach((e)=>{if(e.isIntersecting){e
 document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,3)*60)+'ms';io.observe(el);});
 
 /* Formulario demo: abre el correo con los datos. En producción, POST a tu backend o Formspree. */
+const isEN=document.documentElement.lang==='en';
+const formT=isEN?{
+  missing:'Please fill in your name and email.',
+  labels:['Name','Phone','City','Service'],
+  subject:'Website inquiry',
+  sent:'Opening your email client… if it doesn’t open, write to us at info@astrion.com.co'
+}:{
+  missing:'Por favor completa tu nombre y correo.',
+  labels:['Nombre','Teléfono','Ciudad','Servicio'],
+  subject:'Solicitud web',
+  sent:'Abriendo tu correo… si no se abre, escríbenos a info@astrion.com.co'
+};
 const form=document.getElementById('contactForm'),note=document.getElementById('formNote');
-form.addEventListener('submit',(ev)=>{ev.preventDefault();const f=new FormData(form);const nombre=(f.get('nombre')||'').toString().trim();const email=(f.get('email')||'').toString().trim();if(!nombre||!email){note.textContent='Por favor completa tu nombre y correo.';note.style.color='var(--ion)';return;}const cuerpo=encodeURIComponent(`Nombre: ${nombre}\nTeléfono: ${f.get('telefono')||'-'}\nCiudad: ${f.get('ciudad')||'-'}\nServicio: ${f.get('servicio')}\n\n${f.get('mensaje')||''}`);const asunto=encodeURIComponent(`Solicitud web — ${f.get('servicio')}`);window.location.href=`mailto:info@astrion.com.co?subject=${asunto}&body=${cuerpo}`;note.textContent='Abriendo tu correo… si no se abre, escríbenos a info@astrion.com.co';note.style.color='';});
+if(form){
+  form.addEventListener('submit',(ev)=>{ev.preventDefault();const f=new FormData(form);const nombre=(f.get('nombre')||'').toString().trim();const email=(f.get('email')||'').toString().trim();if(!nombre||!email){note.textContent=formT.missing;note.style.color='var(--ion)';return;}const [lName,lPhone,lCity,lService]=formT.labels;const cuerpo=encodeURIComponent(`${lName}: ${nombre}\n${lPhone}: ${f.get('telefono')||'-'}\n${lCity}: ${f.get('ciudad')||'-'}\n${lService}: ${f.get('servicio')}\n\n${f.get('mensaje')||''}`);const asunto=encodeURIComponent(`${formT.subject} — ${f.get('servicio')}`);window.location.href=`mailto:info@astrion.com.co?subject=${asunto}&body=${cuerpo}`;note.textContent=formT.sent;note.style.color='';});
+}

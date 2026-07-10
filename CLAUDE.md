@@ -4,18 +4,40 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-This repo is the marketing site for ASTRION S.A.S., a Colombian engineering firm offering two service divisions — solar/electrical energy and technology/IT infrastructure. Content and copy are in Spanish.
+This repo is the marketing site for ASTRION S.A.S., a Colombian engineering firm offering two service divisions — solar/electrical energy and technology/IT infrastructure. Spanish is the default/primary language; an English version exists as an alternate, reachable via a language switcher in the nav.
 
-There is no build system, package manager, framework, or test suite. It's a static site: one HTML entry point, one CSS file, one JS file, plus local image assets and a handful of images loaded from a Cloudinary CDN.
+There is no build system, package manager, framework, or test suite. It's a static site: two HTML entry points (one per language) sharing one CSS file and one JS file, plus local image assets and a handful of images loaded from a Cloudinary CDN.
 
 ## File structure
 
 ```
-index.html            — markup only; links assets/css/styles.css and assets/js/main.js
-assets/css/styles.css — all CSS
-assets/js/main.js     — all JS (nav scroll state, mobile menu, scroll-reveal, sectors carousel, contact form)
-assets/img/           — local PNGs (favicon, nav/footer logos)
+index.html                      — Spanish home (default); links assets/css/styles.css and assets/js/main.js
+en/index.html                    — English home, same structure/ids, translated copy; links ../assets/...
+trabaja-con-nosotros/index.html — Spanish careers page; links ../assets/...
+en/careers/index.html            — English careers page; links ../../assets/...
+assets/css/styles.css           — all CSS, shared by every page
+assets/js/main.js               — all JS, shared by every page (nav scroll state, mobile menu, scroll-reveal, sectors carousel, contact form)
+assets/img/                     — local PNGs (favicon, nav/footer logos)
 ```
+
+Every page is a standalone HTML file — no templating/build step. `main.js` and `styles.css` are the only things shared; if you add a new page, wire it up the same way (own `<header class="nav">`/`<nav class="mnav">`/`<footer>`, correct relative depth to `assets/`, `<script src=".../assets/js/main.js">` at the end of body). `main.js` is written defensively for this: it no-ops gracefully if a page has no `.hero` or no `#contactForm` (e.g. the careers page has a `.hero` but no contact form) — don't remove those `if(hero)`/`if(form)` guards.
+
+### Two-language setup (`index.html` + `en/index.html`)
+
+- The two pages are **independent, hand-maintained copies** of the same markup — there's no templating/build step. When you change structure, copy, or add a section in one, mirror the change in the other (translated). This is a deliberate tradeoff for a single-page static site with no build tooling; don't introduce a client-side i18n string-swap system unless the number of languages grows.
+- Both pages share `assets/css/styles.css` and `assets/js/main.js` unchanged — `en/index.html` just references them via `../assets/...` (one directory up) instead of `assets/...`.
+- **IDs, `name` attributes, and hash anchors must stay identical across both pages** (`#firma`, `#capacidades`, `#metodo`, `#sectores`, `#contacto`, `#energia`, `#tecnologia`, `#inicio`, and form field `name`s like `nombre`/`telefono`/`ciudad`/`servicio`/`mensaje`) — `main.js` is shared and queries these by ID/name, and the language switcher links append the current `location.hash` so switching language keeps you on the same section. Only the *visible* text (labels, placeholders, headings) is translated; internal ids/names stay in Spanish even on the English page.
+- `<html lang="es">` vs `<html lang="en">` drives the contact-form JS copy (validation message, mailto subject/labels, confirmation note) — see the `isEN` branch in `main.js`. If you add more user-facing strings to the form's JS, branch them the same way instead of hardcoding Spanish.
+- The language switcher is `.nav__lang` (desktop, inside `.nav__links`) and `.mnav__lang` (mobile, first item in `.mnav`), both marked with the shared class `js-lang-switch` that `main.js` uses to append the current hash to the link's `href` on load.
+
+### Careers page (`trabaja-con-nosotros/index.html` + `en/careers/index.html`)
+
+- Standing "always hiring" page, not a dated job board — copy frames openings as permanent (`Vacantes permanentes` / `Permanent openings`), so don't add posting dates or expiry copy.
+- Has its own hero, structurally identical to the homepage's: `<section class="hero hero--careers">` reuses `.hero__fig`/`.hero__side`/`.fig__split`/`.hero__copy`/`.hero__foot`/`.hero__spec`/`.hero__actions` as-is, just with a different image (the "Únete" team photo) and copy. The `.hero--careers` modifier only exists to override the mobile `.fig__split .half` background-image and crop position (`background-position`) and the desktop `object-position` — since those are hardcoded per-image in `styles.css`, any new page reusing `.hero` with a different picture needs its own modifier class the same way; don't reuse the bare `.fig__split`/`.half--e`/`.half--t` selectors unscoped or it'll pull in whichever hero image happens to be declared last.
+- After the hero, 3-part shape on both language versions: `#intro` (`.sec--deep`, rail `01`, "Why ASTRION" — reuses the `.firma__body`/`.firma__cols`/`.facts` pattern from the homepage's "La firma" section, now just the culture/benefits blurb since the main headline moved into the hero), `#vacantes` (`.sec--gray`, rail `02`, two `.jobs-group` blocks — "Energía"/"Energy" and "Tecnología"/"Technology" — each a `.job-list` of `.job` rows), `#postulate` (`.sec--line`, rail `03`, reuses the homepage's `.chan` contact-channels component pointed at `empleos@astrion.com.co`).
+- `.job` reuses the `.svc li` two-column row shape (mono code + content) but with room for a title, description, meta tags (`.job__meta`), and a `.tlink` "apply" link. Each apply link is a **static, hand-encoded `mailto:` link** (subject + body prefilled per position) — not JS-generated, since these are fixed listings rather than a dynamic form.
+- Because this page lives one level deep (two for the English version), all `href`s back to the homepage's sections use `../index.html#firma` etc. (not bare `#firma`) — a bare hash anchor would just scroll within this page and do nothing.
+- If you add/remove a position, keep the count and division split mirrored between the Spanish and English versions, and regenerate the `mailto:` encoding for both (subject/body text differs by language; see the existing links for the encoding pattern — spaces are `%20`, the em dash is `%E2%80%94`).
 
 - **Preview**: open `index.html` directly in a browser — no dev server or build step needed. Because it now loads `assets/css/styles.css` via `<link>` and `assets/js/main.js` via `<script src>` (not inline), opening the file with `file://` works fine in modern browsers (no CORS issue for local same-folder relative paths); if anything ever fails to load under `file://`, serve the folder with any static server as a fallback.
 - There's no linter or formatter configured; match the existing minified-inline-CSS / compact-JS style already in these files rather than reformatting.
@@ -38,6 +60,7 @@ assets/img/           — local PNGs (favicon, nav/footer logos)
    - `#sectores` ("Sectores", 04) — auto-scrolling image carousel (`.sectors-carousel` > `.sectors-viewport` > `.sectors-track#sectorsTrack`), one `.sector-item` per industry with a background image; caption is small by default (`.sector-item__tag`) and grows to a large centered label on hover. `main.js` clones the track's children once on load (marking clones `aria-hidden`) so the CSS `translateX(-50%)` keyframe loops seamlessly — if you add/remove industries, edit the source items in `index.html` only, the clone step handles duplication.
    - `#contacto` ("Contacto", 05) — contact channels (WhatsApp/email) + the lead form (`#contactForm`).
    Every section follows the same `sec__grid` = sticky rail (index number + section name) beside the content pattern; keep new sections consistent with it.
+   `.sec`, `.cap`, and `.hero` all carry `scroll-margin-top:110px` (matches the `.sec__rail` sticky `top` offset) so that jumping to an anchor — especially a cross-page link like `../index.html#firma` from the careers page — doesn't land the section's top edge underneath the fixed `.nav`. If you add a new anchor target that isn't a `.sec`/`.cap`/`.hero` (or add pages with the fixed nav at a different height), give it the same `scroll-margin-top` or anchor links to it will look like they land in the wrong place.
 4. **`<footer class="footer">`** (in `index.html`) and **`assets/js/main.js`**:
    - Nav scroll state (`.scrolled`, `.on-hero`, `.over-dark`) via `navState()` — see nav notes above.
    - Mobile menu toggle (`#burger` / `#mnav`).
@@ -48,6 +71,6 @@ assets/img/           — local PNGs (favicon, nav/footer logos)
 ## Content/design conventions to preserve
 
 - Section eyebrow labels use the two-digit index pattern (`01`, `02`, ...) matching both the nav anchors and the `.sec__rail .idx` markup — keep these in sync if sections are reordered.
-- Copy is in Spanish; keep new copy consistent in tone and language unless told otherwise.
+- Spanish (`index.html`) is the source of truth for copy tone/voice; `en/index.html` is a translation of it. When adding copy, write the Spanish first, keep tone consistent, then mirror an English translation into `en/index.html`.
 - Service list items (`.svc`) use short mono-styled codes (`E.01`, `T.02`) before the label — follow this numbering convention when adding list entries there. The sectors carousel items don't use these codes, just the industry name.
 - Respect `prefers-reduced-motion` (already handled globally near the end of `styles.css`) when adding new animations.
