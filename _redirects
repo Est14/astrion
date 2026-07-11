@@ -1,0 +1,4 @@
+# Redirect 301: la landing de warranty existe solo en inglés (formato Netlify/Cloudflare Pages).
+# Equivalente Apache (.htaccess):  Redirect 301 /garantias/ /en/warranty/
+# Equivalente nginx:               location /garantias/ { return 301 /en/warranty/; }
+/garantias/* /en/warranty/ 301

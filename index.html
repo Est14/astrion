@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ASTRION — Ingeniería en energía y tecnología para empresas | Colombia</title>
-<meta name="description" content="ASTRION S.A.S. integra energía solar e infraestructura tecnológica bajo una sola firma de ingeniería. Diseño, implementación y soporte para empresas e industria en toda Colombia." />
+<title>ASTRION — Energía solar, software &amp; IA y soporte | Colombia</title>
+<meta name="description" content="ASTRION S.A.S. integra energía solar, instalaciones eléctricas, software e inteligencia artificial y soporte tecnológico continuo bajo una sola firma de ingeniería, para empresas en toda Colombia." />
 <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="image" href="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783298545/Hero_ry2rfv.png" fetchpriority="high" />
+<link rel="preload" as="image" href="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783739490/Hero_zx2tzo.png" fetchpriority="high" />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
@@ -21,13 +21,13 @@
     <img class="l-light" src="assets/img/logo-light.png" alt="" aria-hidden="true" />
   </a>
   <nav class="nav__links" aria-label="Navegación principal">
-    <a href="#firma">La firma</a>
-    <a href="#capacidades">Capacidades</a>
-    <a href="#metodo">Método</a>
+    <a href="#energia">Energía</a>
+    <a href="#tecnologia">Software &amp; IA</a>
+    <a href="#soporte">Soporte</a>
     <a href="#sectores">Sectores</a>
     <a href="trabaja-con-nosotros/index.html">Carreras</a>
     <a class="m nav__lang js-lang-switch" href="en/index.html" hreflang="en" lang="en">EN<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 9l6 6 6-6"/></svg></a>
-    <a class="nav__cta" href="#contacto">Iniciar un proyecto</a>
+    <a class="nav__cta" href="#contacto">Contáctanos</a>
   </nav>
   <button class="nav__burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav">
     <svg width="29" height="29" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
@@ -36,12 +36,12 @@
 
 <nav class="mnav" id="mnav" aria-label="Menú móvil">
   <a class="mnav__lang js-lang-switch" href="en/index.html" hreflang="en" lang="en">English <span class="m">EN</span></a>
-  <a href="#firma">La firma <span class="m">01</span></a>
-  <a href="#capacidades">Capacidades <span class="m">02</span></a>
-  <a href="#metodo">Método <span class="m">03</span></a>
-  <a href="#sectores">Sectores <span class="m">04</span></a>
+  <a href="#energia">Energía <span class="m">Div. 01</span></a>
+  <a href="#tecnologia">Software &amp; IA <span class="m">Div. 02</span></a>
+  <a href="#soporte">Soporte <span class="m">Div. 03</span></a>
+  <a href="#sectores">Sectores</a>
   <a href="trabaja-con-nosotros/index.html">Carreras</a>
-  <a href="#contacto">Iniciar un proyecto</a>
+  <a href="#contacto">Contáctanos</a>
 </nav>
 
 <main id="inicio">
@@ -49,43 +49,30 @@
 <!-- ================= HERO: la imagen abre la página ================= -->
 <section class="hero">
   <div class="hero__fig">
-    <img src="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783298545/Hero_ry2rfv.png"
+    <img src="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783739490/Hero_zx2tzo.png"
          width="1672" height="941" fetchpriority="high"
-         alt="Izquierda: técnico de ASTRION instalando paneles solares sobre cubierta. Derecha: ingeniero de ASTRION brindando soporte tecnológico desde el centro de operaciones." />
-    <div class="hero__side hero__side--e rv">
-      <span class="m">División 01</span>
-      <span class="rule"></span>
-      <span class="w">Energía</span>
-    </div>
-    <div class="hero__side hero__side--t rv">
-      <span class="m">División 02</span>
-      <span class="rule"></span>
-      <span class="w">Tecnología &amp; Soporte</span>
-    </div>
+         alt="Izquierda: técnico de ASTRION instalando paneles solares sobre cubierta. Centro: técnico del equipo de soporte diagnosticando hardware. Derecha: ingeniero desarrollando software y tableros de inteligencia artificial." />
   </div>
-  <!-- versión móvil: la panorámica se parte en dos mitades -->
+  <!-- versión móvil: la panorámica se parte en tres paneles (recortes de la misma imagen), sin rotulación -->
   <div class="fig__split" aria-hidden="true">
-    <div class="half half--e">
-      <div class="hero__side hero__side--e"><span class="m">División 01</span><span class="rule"></span><span class="w">Energía</span></div>
-    </div>
-    <div class="half half--t">
-      <div class="hero__side hero__side--t"><span class="m">División 02</span><span class="rule"></span><span class="w">Tecnología &amp; Soporte</span></div>
-    </div>
+    <div class="half half--e"></div>
+    <div class="half half--t"></div>
+    <div class="half half--w"></div>
   </div>
 
   <div class="wrap hero__copy">
-    <h1 class="rv">La ingeniería que integra la <em>energía</em> y la <em>tecnología</em> de tu empresa.</h1>
+    <h1 class="rv">Operamos la infraestructura <em>tecnológica</em> y <em>energética</em> que tu empresa necesita para crecer.</h1>
     <div class="hero__foot rv">
       <div>
-        <p class="hero__sub">Diseñamos, implementamos y soportamos sistemas de energía solar e infraestructura tecnológica con un mismo equipo y un único responsable, en toda Colombia.</p>
+        <p class="hero__sub">Energía, garantías de hardware, soporte tecnológico y software con inteligencia artificial bajo una sola operación.</p>
         <div class="hero__spec m">
-          <span>Solar FV</span><span>Eléctrico</span><span>Software</span><span>Redes</span><span>CCTV</span>
+          <span>Solar FV</span><span>Eléctrico</span><span>Software</span><span>IA</span><span>Redes</span><span>Soporte</span>
         </div>
       </div>
       <div class="hero__actions">
         <a class="btn btn--inv" href="#contacto">Iniciar un proyecto
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="btn btn--outd" href="#capacidades">Ver capacidades</a>
+        <a class="btn btn--outd" href="#capacidades">Explorar soluciones</a>
       </div>
     </div>
   </div>
@@ -99,16 +86,16 @@
       <span class="m m--dim">La firma</span>
     </div>
     <div class="firma__body">
-      <h2 class="rv">Energía y tecnología. Un solo equipo de ingeniería.</h2>
+      <h2 class="rv">Energía, software y soporte. Una sola firma de ingeniería.</h2>
       <div class="firma__cols rv">
         <p>La mayoría de las empresas contrata por un lado a quien instala la energía y por otro a quien monta la tecnología. Las dos obras avanzan sin hablarse, y los problemas aparecen justo en medio: en la coordinación que nadie asumió.</p>
-        <p>ASTRION existe para cerrar ese vacío. Reunimos energía solar e infraestructura tecnológica bajo un solo estándar de ingeniería y un único responsable — desde la primera visita hasta el soporte continuo.</p>
+        <p>ASTRION existe para cerrar ese vacío. Reunimos energía solar, software e inteligencia artificial bajo un solo estándar de ingeniería y un único responsable. Y llevamos ese mismo estándar al día a día: soporte tecnológico continuo para que tu operación nunca se detenga.</p>
       </div>
       <dl class="facts rv" style="margin:0;">
         <div class="facts__row"><dt class="m m--dim">Modelo</dt><dd>Responsable único de principio a fin</dd></div>
         <div class="facts__row"><dt class="m m--dim">Criterio</dt><dd>Diseño sobre cálculo, normativa y retorno — no sobre catálogo</dd></div>
         <div class="facts__row"><dt class="m m--dim">Impacto</dt><dd>Menor factura de energía y menor huella de carbono en la misma decisión</dd></div>
-        <div class="facts__row"><dt class="m m--dim">Postventa</dt><dd>Garantía, mantenimiento y monitoreo en toda Colombia</dd></div>
+        <div class="facts__row"><dt class="m m--dim">Soporte</dt><dd>Mantenimiento, monitoreo y acompañamiento continuo en toda Colombia</dd></div>
       </dl>
     </div>
   </div>
@@ -122,8 +109,8 @@
       <span class="m m--dim">Capacidades</span>
     </div>
     <div>
-      <h2 class="rv" style="margin-bottom:20px;">Dos divisiones. Un solo estándar.</h2>
-      <p class="lead rv" style="margin-bottom:64px;">Cada división resuelve su campo de principio a fin. Juntas cubren toda la infraestructura física y digital de tu operación.</p>
+      <h2 class="rv" style="margin-bottom:20px;">Tres divisiones. Un solo estándar.</h2>
+      <p class="lead rv" style="margin-bottom:64px;">Cada división resuelve su campo de principio a fin: la infraestructura física y digital de tu operación, y el soporte que la mantiene funcionando.</p>
 
       <!-- DIV.01 -->
       <article class="cap cap--e rv" id="energia">
@@ -147,19 +134,39 @@
       <!-- DIV.02 -->
       <article class="cap cap--t rv" id="tecnologia">
         <div class="cap__head">
-          <span class="m m--ion">Div. 02 — Tecnología</span>
-          <h3>Software e infraestructura TI</h3>
-          <p>Construimos la columna digital de tu operación: software a la medida, redes confiables y seguridad electrónica, listos para crecer contigo.</p>
-          <a class="tlink" href="#contacto">Cotizar un proyecto de tecnología
+          <span class="m m--ion">Div. 02 — Software &amp; IA</span>
+          <h3>Software e inteligencia artificial</h3>
+          <p>Construimos la columna digital de tu operación: software a la medida, inteligencia artificial aplicada a tus datos y redes confiables, listos para crecer contigo.</p>
+          <a class="tlink" href="#contacto">Cotizar un proyecto de software
             <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          <div class="cap__img" role="img" aria-label="Ingeniero brindando soporte tecnológico en centro de operaciones"></div>
-          <div class="cap__imgcap"><span class="m m--dim">Desarrollo, operaciones y Soporte</span><span class="m m--dim"></span></div>
+          <div class="cap__img" role="img" aria-label="Pantallas con código y tableros de analítica en el centro de desarrollo"></div>
+          <div class="cap__imgcap"><span class="m m--dim">Desarrollo, datos e inteligencia artificial</span><span class="m m--dim"></span></div>
         </div>
         <ul class="svc">
           <li><span class="m m--dim">T.01</span>Desarrollo de software a la medida</li>
-          <li><span class="m m--dim">T.02</span>Cableado estructurado y redes</li>
-          <li><span class="m m--dim">T.03</span>Seguridad electrónica y videovigilancia (CCTV)</li>
-          <li><span class="m m--dim">T.04</span>Suministro de equipos tecnológicos</li>
+          <li><span class="m m--dim">T.02</span>Inteligencia artificial y analítica de datos</li>
+          <li><span class="m m--dim">T.03</span>Cableado estructurado y redes</li>
+          <li><span class="m m--dim">T.04</span>Seguridad electrónica y videovigilancia (CCTV)</li>
+          <li><span class="m m--dim">T.05</span>Suministro de equipos tecnológicos</li>
+        </ul>
+      </article>
+
+      <!-- DIV.03 -->
+      <article class="cap cap--w rv" id="soporte">
+        <div class="cap__head">
+          <span class="m m--ion">Div. 03 — Soporte Tecnológico</span>
+          <h3>Tu departamento de tecnología, sin tener uno.</h3>
+          <p>Mesa de ayuda, mantenimiento preventivo y correctivo de equipos, soporte de redes e infraestructura, y acompañamiento continuo con SLAs definidos. Para empresas en Colombia que necesitan que la tecnología simplemente funcione.</p>
+          <a class="tlink" href="#contacto">Cotizar un contrato de soporte
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div class="cap__img" role="img" aria-label="Equipo de soporte tecnológico atendiendo la operación"></div>
+          <div class="cap__imgcap"><span class="m m--dim">Mesa de ayuda, mantenimiento y soporte continuo</span><span class="m m--dim"></span></div>
+        </div>
+        <ul class="svc">
+          <li><span class="m m--dim">S.01</span>Mesa de ayuda y soporte remoto</li>
+          <li><span class="m m--dim">S.02</span>Mantenimiento de equipos e infraestructura</li>
+          <li><span class="m m--dim">S.03</span>Soporte de redes</li>
+          <li><span class="m m--dim">S.04</span>Contratos de soporte con SLA mensual</li>
         </ul>
       </article>
     </div>
@@ -175,12 +182,12 @@
     </div>
     <div>
       <h2 class="rv" style="margin-bottom:20px;">Un método de ingeniería, no una venta de catálogo.</h2>
-      <p class="lead rv">El mismo proceso para un sistema solar o para una red completa. Así sabes qué esperar en cada etapa.</p>
+      <p class="lead rv">El mismo proceso para un sistema solar, un desarrollo de software o un contrato de soporte. Así sabes qué esperar en cada etapa.</p>
       <div class="steps">
         <div class="step rv">
           <span class="m m--ion">Fase 01</span>
           <h3>Diagnóstico</h3>
-          <p>Visitamos tu operación, entendemos tu consumo o tu necesidad digital y definimos el alcance real.</p>
+          <p>Visitamos tu operación, entendemos tu consumo energético, tu necesidad digital o tu infraestructura actual, y definimos el alcance real.</p>
         </div>
         <div class="step rv">
           <span class="m m--ion">Fase 02</span>
@@ -195,7 +202,9 @@
         <div class="step rv">
           <span class="m m--ion">Fase 04</span>
           <h3>Soporte y monitoreo</h3>
-          <p>No desaparecemos tras la entrega: garantía, mantenimiento y acompañamiento continuo.</p>
+          <p>No desaparecemos tras la entrega: mantenimiento, monitoreo y acompañamiento continuo.</p>
+          <a class="tlink" href="#soporte" style="margin-top:16px;">Conoce nuestros contratos de soporte
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
     </div>
@@ -285,9 +294,11 @@
             <option>Instalaciones eléctricas</option>
             <option>Diseño y legalización eléctrica</option>
             <option>Software a la medida</option>
+            <option>Inteligencia artificial y datos</option>
             <option>Redes y cableado estructurado</option>
             <option>Seguridad electrónica (CCTV)</option>
             <option>Equipos tecnológicos</option>
+            <option>Soporte técnico y mantenimiento</option>
             <option>Aún no lo tengo claro</option>
           </select>
         </div>
@@ -307,7 +318,7 @@
     <div class="footer__top">
       <div class="footer__brand">
         <img src="assets/img/logo-light.png" alt="ASTRION" />
-        <p>Firma de ingeniería en energía solar e infraestructura tecnológica para empresas e industria en toda Colombia.</p>
+        <p>Firma de ingeniería en energía solar, instalaciones eléctricas, software e inteligencia artificial y soporte tecnológico continuo — para empresas e industria en toda Colombia.</p>
         <div class="footer__social">
           <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
           <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 .02A2.5 2.5 0 004.98 3.5zM3 8.98h4V21H3zM9 8.98h3.8v1.64h.05c.53-.95 1.83-1.95 3.76-1.95 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.3c0-1.26-.02-2.9-1.76-2.9-1.77 0-2.04 1.38-2.04 2.8V21H9z"/></svg></a>
@@ -319,12 +330,16 @@
         <a href="#energia">Energía solar</a><a href="#energia">Instalaciones eléctricas</a><a href="#energia">Diseño y legalización</a><a href="#energia">Mantenimiento</a>
       </div>
       <div class="footer__col">
-        <h4>Tecnología</h4>
-        <a href="#tecnologia">Software a la medida</a><a href="#tecnologia">Redes y cableado</a><a href="#tecnologia">Seguridad electrónica</a><a href="#tecnologia">Equipos</a>
+        <h4>Software &amp; IA</h4>
+        <a href="#tecnologia">Software a la medida</a><a href="#tecnologia">Inteligencia artificial</a><a href="#tecnologia">Redes y cableado</a><a href="#tecnologia">Seguridad electrónica</a>
+      </div>
+      <div class="footer__col">
+        <h4>Soporte Tecnológico</h4>
+        <a href="#soporte">Mesa de ayuda</a><a href="#soporte">Mantenimiento de equipos</a><a href="#soporte">Soporte de redes</a><a href="#soporte">Contratos con SLA</a>
       </div>
       <div class="footer__col">
         <h4>Empresa</h4>
-        <a href="#firma">La firma</a><a href="#metodo">Método</a><a href="#sectores">Sectores</a><a href="trabaja-con-nosotros/index.html">Carreras</a><a href="#contacto">Contacto</a>
+        <a href="#firma">La firma</a><a href="#metodo">Método</a><a href="#sectores">Sectores</a><a href="trabaja-con-nosotros/index.html">Carreras</a><a href="#contacto">Contacto</a><a href="en/warranty/index.html" hreflang="en" lang="en">Warranty Platform (EN)</a>
       </div>
     </div>
     <div class="footer__bottom">
