@@ -17,6 +17,9 @@ index.html                      — Spanish home (default); links assets/css/sty
 en/index.html                    — English home, same structure/ids, translated copy; links ../assets/...
 trabaja-con-nosotros/index.html — Spanish careers page; links ../assets/...
 en/careers/index.html            — English careers page; links ../../assets/...
+energia/index.html              — Spanish division page (Div. 01); EN twin: en/energy/index.html
+software-ia/index.html          — Spanish division page (Div. 02); EN twin: en/software-ai/index.html
+soporte/index.html              — Spanish division page (Div. 03); EN twin: en/support/index.html
 en/warranty/index.html           — English-only standalone warranty-platform B2B landing; links ../../assets/...
 garantias/index.html            — redirect stub only (meta refresh + JS fallback) → /en/warranty/; real 301 lives in _redirects
 _redirects                      — hosting-level 301 (/garantias/* → /en/warranty/), Netlify/Cloudflare Pages format; Apache/nginx equivalents in its comments
@@ -71,7 +74,13 @@ Every page is a standalone HTML file — no templating/build step. `main.js` and
    Don't reintroduce a bounding-box-only "on-hero for the whole hero height" check — that was the bug that let the hero's own large heading text show through the transparent nav while scrolling; `on-hero` must turn off as soon as `scrolled` is true.
 3. **`<main id="inicio">`** — the page content, as numbered sections each with `id` anchors matching the nav links:
    - `.hero` — full-bleed hero image (`Hero_zx2tzo.png`, a single three-scene panorama: solar rooftop on the left, hardware-diagnostics bench in the center, software/AI screens on the right), shown **clean, with no overlay labels** — the image's blue light-flow connects the three scenes and the divisions live in the nav instead (see below). The `.hero__side` label CSS still exists because the careers hero and the warranty landing use it. The mobile-only fallback (`.fig__split`) stacks three unlabeled panels, each a different `background-position` crop of the same panorama (`.half--e` left / `.half--t` right / `.half--w` center). Each capacidades division has its own dedicated image (set in `styles.css`): `.cap--e` `energia_qkjmew.png`, `.cap--t` `Linea_Software_su4sro.png`, `.cap--w` `Linea_Soporte_jchyfb.png`.
-   - Homepage/careers nav links are the three divisions + Sectores/Industries + Carreras/Careers (+ lang switcher + CTA): `#energia`, `#tecnologia` (labeled "Software & IA"/"Software & AI"), `#soporte` (labeled "Soporte"/"Support"). "La firma" and "Método" are reachable by scrolling and via the footer's Empresa/Company column, not the nav. In the mobile `.mnav`, division links carry `Div. 01/02/03` mono tags instead of the old section indices.
+   - Corporate nav links are the three divisions + Sectores/Industries + Carreras/Careers (+ lang switcher + "Contáctanos"/"Contact us" CTA). The division links go to the **division pages** (`/energia/`, `/software-ia/`, `/soporte/` — EN: `/en/energy/`, `/en/software-ai/`, `/en/support/`), NOT to the homepage's `#energia`/`#tecnologia`/`#soporte` anchors — those sections still exist on the homepage (Capacidades stays) and are linked from the footer and the Método cross-sell tlink. "La firma" and "Método" are reachable by scrolling and via the footer's Empresa/Company column, not the nav. In the mobile `.mnav`, division links carry `Div. 01/02/03` mono tags instead of the old section indices.
+
+### Division pages (`energia/`, `software-ia/`, `soporte/` + EN twins `en/energy/`, `en/software-ai/`, `en/support/`)
+
+- One page per division, hand-maintained ES/EN twins per site convention (shared Spanish section ids: `#division` 01 `.sec--deep`, `#servicios` 02 `.sec--gray` with `.job-list` service rows, `#contacto` 03 `.sec--line` with `.chan`). The nav CTA on these pages points to the page's own `#contacto` section; the "Ir al formulario" tlink goes to the homepage form.
+- Each hero reuses the shared `.hero` structure with a per-page modifier (`.hero--energia`, `.hero--software`, `.hero--soporte`) that sets the division image: desktop `object-position` override where needed, and a **single** unlabeled-height `.half` in `.fig__split` whose `background-image` is set by the modifier (see the mobile media block in `styles.css`). Division hero images are the same ones used by the homepage `.cap__img` blocks.
+- Service codes/descriptions must stay in sync with the homepage Capacidades `.svc` lists (E.01–E.04, T.01–T.05, S.01–S.04) — if a service is added/renamed, update the homepage article AND the division page in both languages.
    - `#firma` ("La firma", 01) — dark section (`.sec--deep`), positioning/intro copy.
    - `#capacidades` ("Capacidades", 02) — the three service divisions (`#energia`, `#tecnologia`, `#soporte`), each an `<article class="cap">` with a service list (`.svc`).
    - `#metodo` ("Método", 03) — 4-step process grid (`.steps`).
