@@ -39,7 +39,9 @@
       "Bash(sed -i 's|<h3>Tu departamento de tecnología, sin tener uno.</h3>|<h3>Soporte tecnológico continuo</h3>|' index.html)",
       "Bash(sed -i 's|<h3>Your technology department, without having one.</h3>|<h3>Ongoing technology support</h3>|' en/index.html)",
       "Bash(sed -i 's|<h1 class=\"rv\">Tu departamento de tecnología, <em>sin tener uno</em>.</h1>|<h1 class=\"rv\">Soporte tecnológico <em>continuo</em>.</h1>|' soporte/index.html)",
-      "Bash(sed -i 's|<h1 class=\"rv\">Your technology department, <em>without having one</em>.</h1>|<h1 class=\"rv\">Ongoing technology <em>support</em>.</h1>|' en/support/index.html)"
+      "Bash(sed -i 's|<h1 class=\"rv\">Your technology department, <em>without having one</em>.</h1>|<h1 class=\"rv\">Ongoing technology <em>support</em>.</h1>|' en/support/index.html)",
+      "Bash(sed -i 's|<a class=\"tlink\" href=\"#contacto\">Cotizar un proyecto de energía|<a class=\"tlink\" href=\"energia/index.html\">Ver más|; s|<a class=\"tlink\" href=\"#contacto\">Cotizar un proyecto de software|<a class=\"tlink\" href=\"software-ia/index.html\">Ver más|; s|<a class=\"tlink\" href=\"#contacto\">Cotizar un contrato de soporte|<a class=\"tlink\" href=\"soporte/index.html\">Ver más|' index.html)",
+      "Bash(sed -i 's|<a class=\"tlink\" href=\"#contacto\">Get a quote for an energy project|<a class=\"tlink\" href=\"energy/index.html\">See more|; s|<a class=\"tlink\" href=\"#contacto\">Get a quote for a software project|<a class=\"tlink\" href=\"software-ai/index.html\">See more|; s|<a class=\"tlink\" href=\"#contacto\">Get a quote for a support contract|<a class=\"tlink\" href=\"support/index.html\">See more|' en/index.html)"
     ]
   }
 }
