@@ -329,6 +329,8 @@ p{margin:0;}
   .fig__split .hero__side .w{font-size:1.9rem;}
   /* hero de carreras: un solo panel con rótulo centrado */
   .hero--careers .fig__split .half{background-image:url("https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783771528/unete_jgvjad.png");background-position:center 25%;}
+  /* hero de la página "la firma": panel único con la panorámica de la home */
+  .hero--firma .fig__split .half{background-image:url("https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783767883/Hero2_esslp8.png");background-position:47% 55%;}
   /* héroes de división: un solo panel con la imagen de la división */
   .hero--energia .fig__split .half{background-image:url("https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783768949/energia_r29mxp.png");background-position:center;}
   .hero--software .fig__split .half{background-image:url("https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783768949/software_zmzqjd.png");background-position:center;}

@@ -20,6 +20,7 @@ en/careers/index.html            — English careers page; links ../../assets/..
 energia/index.html              — Spanish division page (Div. 01); EN twin: en/energy/index.html
 software-ia/index.html          — Spanish division page (Div. 02); EN twin: en/software-ai/index.html
 soporte/index.html              — Spanish division page (Div. 03); EN twin: en/support/index.html
+la-firma/index.html             — Spanish firm-story page (founders, why the firm exists, principles); EN twin: en/the-firm/index.html
 en/warranty/index.html           — English-only standalone warranty-platform B2B landing; links ../../assets/...
 garantias/index.html            — redirect stub only (meta refresh + JS fallback) → /en/warranty/; real 301 lives in _redirects
 _redirects                      — hosting-level 301 (/garantias/* → /en/warranty/), Netlify/Cloudflare Pages format; Apache/nginx equivalents in its comments
@@ -82,6 +83,12 @@ Every page is a standalone HTML file — no templating/build step. `main.js` and
 - One page per division, hand-maintained ES/EN twins per site convention (shared Spanish section ids: `#division` 01 `.sec--deep`, `#servicios` 02 `.sec--gray` with `.job-list` service rows, `#contacto` 03 `.sec--line` with `.chan`). The nav CTA on these pages points to the page's own `#contacto` section; the "Ir al formulario" tlink goes to the homepage form.
 - Each hero reuses the shared `.hero` structure with a per-page modifier (`.hero--energia`, `.hero--software`, `.hero--soporte`) that sets the division image on the **single** `.half` in `.fig__split` (see the mobile media block in `styles.css`). The "División 0X" label is **bottom-centered** via `.hero__side--w` (not left-aligned `--e`). Division hero images are the same ones used by the homepage `.cap__img` blocks (`energia_r29mxp.png`, `software_zmzqjd.png`, `soporte_ta7wxd.png`).
 - Service codes/descriptions must stay in sync with the homepage Capacidades `.svc` lists (E.01–E.04, T.01–T.05, S.01–S.04) — if a service is added/renamed, update the homepage article AND the division page in both languages.
+
+### Firm-story page (`la-firma/` + `en/the-firm/`)
+
+- "For the curious" page: the homepage `#firma` section keeps only ONE short lead paragraph + the `.facts` table + a tlink to this page (the audience doesn't read; long copy lives here, not on the home). Shared ids: `#historia` (01, `.sec--deep`, origin story + founders facts), `#problema` (02, `.sec--gray`, the two "why ASTRION exists" paragraphs that used to live on the homepage), `#principios` (03, `.sec--line`, principles facts).
+- Founders (owner-provided): Luis Martínez and José Martínez, cousins from Córdoba, passionate about energy, technology, science and AI. Don't invent dates, degrees or milestones beyond this.
+- Hero reuses the homepage panorama via `.hero--firma` (centered `.hero__side--w` label, single mobile `.half`).
    - `#firma` ("La firma", 01) — dark section (`.sec--deep`), positioning/intro copy.
    - `#capacidades` ("Capacidades", 02) — the three service divisions (`#energia`, `#tecnologia`, `#soporte`), each an `<article class="cap">` with a service list (`.svc`).
    - `#metodo` ("Método", 03) — 4-step process grid (`.steps`).
