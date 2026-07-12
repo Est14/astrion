@@ -126,6 +126,7 @@ const formT=isEN?{
   missing:'Please fill in your name and email.',
   labels:['Name','Company','Phone','City','Service','Message'],
   subject:'Website inquiry',
+  consent:'To send the request you must authorize the processing of your personal data.',
   sending:'Sending…',
   ok:'We received your request. We will contact you during business hours.',
   fallback:'We could not send the form. Opening your email client… if it does not open, write to us at info@astrion.com.co'
@@ -133,6 +134,7 @@ const formT=isEN?{
   missing:'Por favor completa tu nombre y correo.',
   labels:['Nombre','Empresa','Teléfono','Ciudad','Servicio','Mensaje'],
   subject:'Solicitud web',
+  consent:'Para enviar la solicitud debes autorizar el tratamiento de tus datos personales.',
   sending:'Enviando…',
   ok:'Recibimos tu solicitud. Te contactaremos en horario hábil.',
   fallback:'No pudimos enviar el formulario. Abriendo tu correo… si no se abre, escríbenos a info@astrion.com.co'
@@ -145,6 +147,8 @@ if(form){
     const nombre=(f.get('nombre')||'').toString().trim();
     const email=(f.get('email')||'').toString().trim();
     if(!nombre||!email){note.textContent=formT.missing;note.style.color='var(--ion)';return;}
+    if(!f.get('autorizacion')){note.textContent=formT.consent;note.style.color='var(--ion)';return;}
+    const ts=new Date().toISOString();
     const [lName,lCompany,lPhone,lCity,lService,lMsg]=formT.labels;
     const datos={};
     datos[lName]=nombre;
@@ -154,6 +158,7 @@ if(form){
     datos[lService]=f.get('servicio');
     datos[lMsg]=f.get('mensaje')||'-';
     datos.email=email;                                 /* reply-to */
+    datos.autorizacion_datos=(isEN?'Yes':'Sí')+' ('+ts+')';
     datos._subject=formT.subject+': '+f.get('servicio');
     datos._template='table';
     datos._captcha='false';
@@ -164,7 +169,7 @@ if(form){
       .then(()=>{form.reset();btn.disabled=false;note.textContent=formT.ok;})
       .catch(()=>{
         btn.disabled=false;note.textContent=formT.fallback;note.style.color='var(--ion)';
-        const cuerpo=encodeURIComponent(lName+': '+nombre+'\n'+lCompany+': '+(f.get('empresa')||'-')+'\n'+lPhone+': '+(f.get('telefono')||'-')+'\n'+lCity+': '+(f.get('ciudad')||'-')+'\n'+lService+': '+f.get('servicio')+'\n\n'+(f.get('mensaje')||''));
+        const cuerpo=encodeURIComponent(lName+': '+nombre+'\n'+lCompany+': '+(f.get('empresa')||'-')+'\n'+lPhone+': '+(f.get('telefono')||'-')+'\n'+lCity+': '+(f.get('ciudad')||'-')+'\n'+lService+': '+f.get('servicio')+'\n'+(isEN?'Data authorization: Yes':'Autorización de datos: Sí')+' ('+ts+')'+'\n\n'+(f.get('mensaje')||''));
         const asunto=encodeURIComponent(formT.subject+': '+f.get('servicio'));
         window.location.href='mailto:info@astrion.com.co?subject='+asunto+'&body='+cuerpo;
       });

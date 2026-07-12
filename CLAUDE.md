@@ -21,6 +21,8 @@ energia/index.html              — Spanish division page (Div. 01); EN twin: en
 software-ia/index.html          — Spanish division page (Div. 02); EN twin: en/software-ai/index.html
 soporte/index.html              — Spanish division page (Div. 03); EN twin: en/support/index.html
 la-firma/index.html             — Spanish firm-story page (founders, why the firm exists, principles); EN twin: en/the-firm/index.html
+politica-de-datos/index.html    — Spanish personal-data policy (Law 1581); EN twin: en/privacy-policy/index.html. LEGAL TEXT IS OWNER-SUPPLIED VERBATIM: do not rewrite it
+terminos/index.html             — Spanish terms of use; EN twin: en/terms/index.html
 en/warranty/index.html           — English-only standalone warranty-platform B2B landing; links ../../assets/...
 garantias/index.html            — redirect stub only (meta refresh + JS fallback) → /en/warranty/; real 301 lives in _redirects
 _redirects                      — hosting-level 301 (/garantias/* → /en/warranty/), Netlify/Cloudflare Pages format; Apache/nginx equivalents in its comments
@@ -101,6 +103,7 @@ Every page is a standalone HTML file — no templating/build step. `main.js` and
    - Mobile menu toggle (`#burger` / `#mnav`).
    - Scroll-reveal animations: any element with class `.rv` is observed and gets `.in` added on intersection (see `.js .rv` / `.js .rv.in` CSS transitions). Add `.rv` to new elements that should animate in on scroll.
    - Sectors carousel clone-for-loop logic (see above).
+   - Data-protection compliance (Law 1581): the contact form has a MANDATORY unchecked-by-default consent checkbox (`name="autorizacion"`); the JS handler blocks BOTH the FormSubmit flow and the mailto fallback until checked, and stamps `autorizacion_datos: Sí/Yes (ISO timestamp)` into the payload and the mailto body as evidence. A short privacy caption (`.form__legal`) sits under the form; careers pages carry the sensitive-data/12-month-retention notice next to the application channels; every footer links the policy and terms pages.
    - Contact form handler: POSTs to FormSubmit (`https://formsubmit.co/ajax/info@astrion.com.co`), a free no-backend relay. IMPORTANT: the first-ever submission triggers an activation email to that inbox; until someone clicks "Activate", FormSubmit does not deliver messages. On fetch failure it falls back to the old `mailto:` behavior. Success/error strings are branched by `isEN` like the rest of the form copy.
 
 ## Content/design conventions to preserve

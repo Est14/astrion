@@ -271,6 +271,23 @@ p{margin:0;}
 .faq summary:hover{color:var(--ion);}
 .faq details p{color:var(--ink-2);padding:0 0 22px;max-width:680px;}
 
+/* ---- páginas legales (política de datos, términos) ---- */
+.legal h1{font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.03em;line-height:1.15;margin-bottom:10px;}
+.legal__meta{display:block;margin-bottom:40px;}
+.legal h3{font-size:1.08rem;font-weight:600;letter-spacing:-.015em;margin:36px 0 10px;}
+.legal p{color:var(--ink-2);max-width:72ch;margin-bottom:12px;}
+.legal strong{color:var(--ink);font-weight:600;}
+
+/* ---- consentimiento de datos (Ley 1581) ---- */
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink-3);line-height:1.55;cursor:pointer;}
+.consent input{width:16px;height:16px;flex:none;margin-top:2px;accent-color:var(--ion);}
+.consent a{text-decoration:underline;}
+.consent a:hover{color:var(--ion);}
+.form__legal{margin-top:14px;color:var(--ink-3);font-size:12px;line-height:1.6;max-width:70ch;}
+.form__legal a{text-decoration:underline;}
+.form__legal a:hover{color:var(--ion);}
+.footer__bottom a:hover{color:#fff;}
+
 /* ---- trabaja con nosotros ---- */
 .jobs-group{margin-top:60px;}
 .jobs-group:first-child{margin-top:0;}
