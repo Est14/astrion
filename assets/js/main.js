@@ -80,6 +80,14 @@ if(bGrid && !matchMedia('(prefers-reduced-motion: reduce)').matches){
   requestAnimationFrame(bFrame);
 }
 
+/* footer móvil: las columnas se pliegan como acordeón (solo teléfonos) */
+document.querySelectorAll('.footer__col h4').forEach(h=>{
+  h.addEventListener('click',()=>{
+    if(!matchMedia('(max-width:640px)').matches)return;
+    h.parentElement.classList.toggle('open');
+  });
+});
+
 /* selector de idioma: conserva la sección actual al cambiar de idioma */
 document.querySelectorAll('.js-lang-switch').forEach(a=>{ if(location.hash) a.href+=location.hash; });
 

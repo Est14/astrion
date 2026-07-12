@@ -65,9 +65,8 @@
 <!-- TODO: replace with a landing-exclusive hero image (today it reuses the homepage panorama).
      Expected asset: a Cloudinary upload (e.g. https://res.cloudinary.com/dbjvlk1bc/image/upload/<version>/warranty-hero.png).
      Recommended dimensions: ~2.29:1 aspect ratio (the desktop .hero__fig crops to 1901/829), minimum 1901×829 px, ideally 2560×1116 px.
-     When swapping: update this <img> src, the <link rel="preload"> and og:image in <head>, and the mobile crop
-     (.fig__split .half--w background-image needs a page-scoped override in assets/css/styles.css, e.g. a .hero--warranty modifier,
-     since the shared .half rule points at the homepage panorama (see the .hero--careers pattern)). -->
+     When swapping: update this <img> src, the <link rel="preload"> and og:image in <head>,
+     and the thumbnail inside .hero__intro-imgs below (phones show that thumbnail instead of this hero image). -->
 <section class="hero">
   <div class="hero__fig">
     <img src="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783767883/Hero2_esslp8.png"
@@ -77,12 +76,6 @@
       <span class="m">Astrion</span>
       <span class="rule"></span>
       <span class="w">Warranty Platform</span>
-    </div>
-  </div>
-  <!-- mobile fallback: center crop of the same panorama -->
-  <div class="fig__split" aria-hidden="true">
-    <div class="half half--w">
-      <div class="hero__side hero__side--w"><span class="m">Astrion</span><span class="rule"></span><span class="w">Warranty Platform</span></div>
     </div>
   </div>
 
@@ -99,6 +92,16 @@
         <a class="btn btn--inv" href="[CALENDLY_URL]" data-cta="hero">Book a 20-minute call
           <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="btn btn--outd" href="#how-it-works">See how it works</a>
+      </div>
+    </div>
+    <!-- hero closing strip (phones only) -->
+    <div class="hero__intro rv">
+      <div class="hero__intro-txt">
+        <p class="hero__intro-title">Local RMA operations.<br />Measurable <span>savings.</span></p>
+        <p class="hero__intro-sub">Reception, diagnosis and resolution in Colombia.</p>
+      </div>
+      <div class="hero__intro-imgs" aria-hidden="true">
+        <img src="https://res.cloudinary.com/dbjvlk1bc/image/upload/v1783767883/Hero2_esslp8.png" alt="" loading="lazy" />
       </div>
     </div>
   </div>
