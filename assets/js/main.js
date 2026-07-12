@@ -109,20 +109,56 @@ function revealHash(){
 revealHash();
 window.addEventListener('hashchange',revealHash);
 
-/* Formulario demo: abre el correo con los datos. En producción, POST a tu backend o Formspree. */
+/* Formulario de contacto: envía por FormSubmit (relay gratuito, sin backend) a info@astrion.com.co.
+   OJO: el primer envío dispara un correo de activación a esa casilla; hasta hacer clic en "Activate",
+   FormSubmit no entrega los mensajes. Si el POST falla (sin red, bloqueado), cae al mailto de siempre. */
+const FORM_ENDPOINT='https://formsubmit.co/ajax/info@astrion.com.co';
 const isEN=document.documentElement.lang==='en';
 const formT=isEN?{
   missing:'Please fill in your name and email.',
-  labels:['Name','Phone','City','Service'],
+  labels:['Name','Company','Phone','City','Service','Message'],
   subject:'Website inquiry',
-  sent:'Opening your email client… if it doesn’t open, write to us at info@astrion.com.co'
+  sending:'Sending…',
+  ok:'We received your request. We will contact you during business hours.',
+  fallback:'We could not send the form. Opening your email client… if it does not open, write to us at info@astrion.com.co'
 }:{
   missing:'Por favor completa tu nombre y correo.',
-  labels:['Nombre','Teléfono','Ciudad','Servicio'],
+  labels:['Nombre','Empresa','Teléfono','Ciudad','Servicio','Mensaje'],
   subject:'Solicitud web',
-  sent:'Abriendo tu correo… si no se abre, escríbenos a info@astrion.com.co'
+  sending:'Enviando…',
+  ok:'Recibimos tu solicitud. Te contactaremos en horario hábil.',
+  fallback:'No pudimos enviar el formulario. Abriendo tu correo… si no se abre, escríbenos a info@astrion.com.co'
 };
 const form=document.getElementById('contactForm'),note=document.getElementById('formNote');
 if(form){
-  form.addEventListener('submit',(ev)=>{ev.preventDefault();const f=new FormData(form);const nombre=(f.get('nombre')||'').toString().trim();const email=(f.get('email')||'').toString().trim();if(!nombre||!email){note.textContent=formT.missing;note.style.color='var(--ion)';return;}const [lName,lPhone,lCity,lService]=formT.labels;const cuerpo=encodeURIComponent(`${lName}: ${nombre}\n${lPhone}: ${f.get('telefono')||'-'}\n${lCity}: ${f.get('ciudad')||'-'}\n${lService}: ${f.get('servicio')}\n\n${f.get('mensaje')||''}`);const asunto=encodeURIComponent(`${formT.subject} — ${f.get('servicio')}`);window.location.href=`mailto:info@astrion.com.co?subject=${asunto}&body=${cuerpo}`;note.textContent=formT.sent;note.style.color='';});
+  form.addEventListener('submit',(ev)=>{
+    ev.preventDefault();
+    const f=new FormData(form);
+    const nombre=(f.get('nombre')||'').toString().trim();
+    const email=(f.get('email')||'').toString().trim();
+    if(!nombre||!email){note.textContent=formT.missing;note.style.color='var(--ion)';return;}
+    const [lName,lCompany,lPhone,lCity,lService,lMsg]=formT.labels;
+    const datos={};
+    datos[lName]=nombre;
+    datos[lCompany]=f.get('empresa')||'-';
+    datos[lPhone]=f.get('telefono')||'-';
+    datos[lCity]=f.get('ciudad')||'-';
+    datos[lService]=f.get('servicio');
+    datos[lMsg]=f.get('mensaje')||'-';
+    datos.email=email;                                 /* reply-to */
+    datos._subject=formT.subject+': '+f.get('servicio');
+    datos._template='table';
+    datos._captcha='false';
+    const btn=form.querySelector('.form__submit');
+    btn.disabled=true;note.style.color='';note.textContent=formT.sending;
+    fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(datos)})
+      .then(r=>{if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(()=>{form.reset();btn.disabled=false;note.textContent=formT.ok;})
+      .catch(()=>{
+        btn.disabled=false;note.textContent=formT.fallback;note.style.color='var(--ion)';
+        const cuerpo=encodeURIComponent(lName+': '+nombre+'\n'+lCompany+': '+(f.get('empresa')||'-')+'\n'+lPhone+': '+(f.get('telefono')||'-')+'\n'+lCity+': '+(f.get('ciudad')||'-')+'\n'+lService+': '+f.get('servicio')+'\n\n'+(f.get('mensaje')||''));
+        const asunto=encodeURIComponent(formT.subject+': '+f.get('servicio'));
+        window.location.href='mailto:info@astrion.com.co?subject='+asunto+'&body='+cuerpo;
+      });
+  });
 }
